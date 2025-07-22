@@ -74,7 +74,7 @@ src/
 - Redis (for caching)
 - API Keys:
   - Anthropic API key (for Claude Sonnet 4)
-  - NewsAPI key
+  - NewsAPI key (see setup details below)
   - Reddit API credentials
   - EVM private key for trading
 
@@ -105,6 +105,36 @@ src/
    # Optional: Open database studio
    npm run db:studio
    ```
+
+### 🔑 API Key Setup Guide
+
+#### NewsAPI Configuration
+
+The agent uses NewsAPI.org to gather real-time news intelligence for market analysis.
+
+1. **Get your NewsAPI key:**
+   - Visit [https://newsapi.org](https://newsapi.org)
+   - Click "Get API Key" or "Sign Up"
+   - Create a free account with your email
+   - Verify your email address
+   - Your API key will be displayed on your dashboard
+
+2. **API Key Plans:**
+   - **Developer Plan (Free)**: 1,000 requests/month, 2-day article delay
+   - **Business Plan ($449/month)**: 250,000 requests/month, live articles
+   - **For testing**: The free plan is sufficient for development and testing
+
+3. **Add to your `.env` file:**
+   ```bash
+   NEWS_API_KEY=your_actual_api_key_here
+   ```
+
+4. **Rate Limiting:**
+   - The tool includes built-in rate limiting to respect API limits
+   - Free tier: Max 1,000 requests per month
+   - Requests are cached to minimize API usage
+
+**Note**: For production trading, consider upgrading to the Business plan for real-time news access without the 2-day delay.
 
 ### Development Commands
 
